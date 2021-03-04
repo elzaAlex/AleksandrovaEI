@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div>
+    <div class="text-center">
+        <h1 class="c-text-h1 margin-five">Информация о покупке</h1>
+    </div>
+   <br>
+    <div class="table-container-addProduct">
+        <table>
+            <thead>
+            <tr>
+                <th class="a-link-no-margin">Название</th>
+                <th class="a-link-no-margin">Стоимость за 1 шт</th>
+                <th class="a-link-no-margin">Продавец</th>
+                <th class="a-link-no-margin">Имя пользователя продавца</th>
+            </tr>
+            </thead>
+            <tbody>
+            <td class="a-link-no-margin" th:text="${product.product_name}"></td>
+            <td th:utext="${product.product_cost}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.firstName}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.username}" class="a-link-no-margin"></td>
+            </tbody>
+        </table>
+    </div>
+</div>
+<form class="login100-form validate-form" th:action="@{/buyer/buyProduct}" method="post">
+    <div class = "add">
+        <input class="input100 m-b-15" type="text" placeholder="Количество товара" id="count" name="count">
+
+        <input class="input100" th:value="${product.id}" type="hidden" placeholder="Id товара" id="idProduct"
+               name="idProduct">
+
+        <input class="input100" th:value="${product.idSeller}" type="hidden" placeholder="Id продавца" id="idSeller"
+               name="idSeller">
+
+        <input class="input100" type="hidden" th:value="${buyer.id}" id="idBuyer" name="idBuyer">
+        <button class="login100-form-btn">
+            Отправить
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

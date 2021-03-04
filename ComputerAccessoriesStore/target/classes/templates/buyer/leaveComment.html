@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<form class="login100-form validate-form" th:action="@{/buyer/leaveComment}" method="post">
+
+    <input class="input100" type="hidden" id="idBuyer" name="idBuyer" th:value="${idBuyer}">
+    <input class="input100" type="hidden" id="idSeller" name="idSeller" th:value="${idSeller}">
+
+
+    <div class="wrap-input100 validate-input m-b-10">
+        <select name="rating" id="rating" class="select">
+            <option value="1" class="select">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <span>
+             <h1 class="c-text-h1 margin-five" style="margin-left: 37%">Оставьте ваш отзыв</h1>
+
+    <textarea  class = "textarea" name="message" id="message"></textarea>
+        </span>
+    </div>
+
+    <div class="container-login100-form-btn p-t-10">
+        <button class="login100-form-btn" style="width: 160px">
+            Отправить
+        </button>
+    </div>
+</form>
+
+</body>
+</html>

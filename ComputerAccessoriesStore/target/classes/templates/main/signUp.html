@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+        </div>
+    </div>
+    <div class="container-login100">
+        <div class="wrap-login100 p-b-30">
+            <form class="login100-form validate-form" th:action="@{/signUp}" method="post">
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+                    <input class="input100" type="text" placeholder="Имя пользователя" id="username" name="username">
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+                    <input class="input100" type="password" placeholder="Пароль" id="password" name="password">
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "First Name is required">
+                    <input class="input100" type="text" placeholder="Имя" id="firstName" name="firstName">
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "Last Name is required">
+                    <input class="input100" type="text" placeholder="Фамилия" id="lastName" name="lastName">
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-10" data-validate = "Email is required">
+                    <input class="input100" type="email" placeholder="Email" id="email" name="email">
+                </div>
+
+                <div class="container-login100-form-btn p-t-10">
+                    <button class="login100-form-btn">
+                        Отправить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

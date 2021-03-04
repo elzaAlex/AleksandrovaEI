@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="text-center ratingTitle">
+    <h1 th:utext="${seller.firstName} + ' ' + ${seller.lastName}"></h1>
+    <img th:utext="${average}" th:src="@{/img/one-star.png}" class="star-bin">
+</div>
+<div th:each="comment: ${comments}">
+    <div class="container-rating">
+        <img th:src="@{/img/user.png}" alt="Avatar" style="width:90px">
+        <p th:utext="${comment.buyer.firstName} + ' ' + ${comment.buyer.lastName} + ' ' +${#calendars.format(comment.created_at, 'HH:mm dd MMM yyyy')}">
+        </p>
+        <p th:utext="${comment.message}"></p>
+        <div th:switch="${comment.rating}">
+            <img th:case="1" th:src="@{/img/one-star.png}" class="star-bin">
+            <img th:case="2" th:src="@{/img/two-star.png}" class="star-bin">
+            <img th:case="3" th:src="@{/img/three-star.png}" class="star-bin">
+            <img th:case="4" th:src="@{/img/four-star.png}" class="star-bin">
+            <img th:case="5" th:src="@{/img/fife-star.png}" class="star-bin">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr >
+            <th class="a-link-no-margin">Имя</th>
+            <th class="a-link-no-margin">Фамилия</th>
+            <th class="a-link-no-margin">Пользователь</th>
+            <th class="a-link-no-margin">Email</th>
+            <th class="a-link-no-margin">Баланс</th>
+            <th class="a-link-no-margin">Свои товары</th>
+            <th class="a-link-no-margin">Просмотреть покупки</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td th:utext="${seller.firstName}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.lastName}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.username}" class="a-link-no-margin"></td>
+            <td th:utext="${seller.email}" class="a-link-no-margin"></td>
+            <td th:utext="${#numbers.formatDecimal(card ,1,2,'COMMA')}" class="a-link-no-margin"></td>
+            <td class="a-link-no-margin"><a th:href="@{/seller/listProduct}"><img th:src="@{/img/buy.png}" class="crash-bin"></a></td>
+            <td class="a-link-no-margin"><a th:href="@{/seller/shopList}"><img th:src="@{/img/buy.png}" class="crash-bin"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

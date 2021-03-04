@@ -1,0 +1,219 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    transition: 0s ease-in-out; /* добавим плавность переходов для всех элементов страницы*/
+}
+
+input,
+button {
+    align-self: center;
+    font-family: "Source Sans Pro";
+    font-size: 1.1rem;
+    font-weight: 400;
+    align-self: center;
+}
+
+.c-text-h1 {
+    color: #606665;
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+.choice{
+    padding:2% 15%;
+}
+.homeUl{
+padding-top: 20px;
+}
+.margin-five {
+    margin-top: 1%;
+}
+
+.margin-bottom-five {
+    margin-bottom: 5%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.c-text-body {
+    margin-top: 0.9%;
+    color: #606665;
+    font-family: "Source Sans Pro Regular";
+    font-size: 1.125rem;
+    font-weight: 200;
+}
+
+.c-label {
+    color: #606665;
+    font-family: "Montserrat";
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.box {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.c-box-input {
+    margin-top: 5%;
+    width: 175px;
+    height: 100px;
+}
+
+.c-box-incorrect {
+    margin-top: 2.5%;
+}
+
+.incorrect {
+    align-self: center;
+    justify-content: center;
+    color: red;
+}
+
+.navbar {
+    margin-top: 1.5rem;
+    display: flex;
+}
+
+.container {
+    margin-left: 2.6%;
+    margin-right: 18.3%;
+}
+.incorrect{
+    color: red;
+    font-size: 24px;
+    margin-left: 18px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.06px;
+    -webkit-text-stroke-color: white;
+}
+
+li {
+    font-size: 1.1rem;
+    /*font-weight: 600;*/
+    text-align: left;
+    flex-direction: column;
+    list-style: none;
+    display: list-item;
+}
+
+ul {
+    box-sizing: border-box;
+    flex-direction: row;
+    display: flex;
+    margin-top: 0;
+    margin-left: auto;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+a {
+    box-sizing: border-box;
+    text-decoration: none;
+    line-height: 1.5;
+    color: #606665;
+}
+
+.a-link-margin {
+    margin-left: 2.5rem;
+    font-size:2rem;
+}
+
+.a-link-no-margin {
+    font-family: "Source Sans Pro Regular";
+    text-align: left;
+    padding: 15px;
+}
+.table-container {
+    padding: 2% 20%;
+    font-size: 18px;
+}
+.table-container-user{
+    padding-left: 14%;
+    font-size: 18px;
+}
+.table-container-act{
+    padding: 2% 2%;
+    font-size: 18px;
+}
+.table-container-product{
+    padding-left: 27%;
+    font-size: 18px;
+
+}
+.addProduct{
+    padding-left: 44%;
+    padding-block-end: 8px;
+}
+.logo {
+    margin-left: 20px;
+    height: 35px;
+    width: 35px;
+}
+.logo:hover{
+    transition: 2s;
+}
+th{
+    background-color: #1c9f8a;
+    color: white;
+}
+
+th, td{
+    text-align: left;
+    padding: 8px;
+}
+td{
+background-color: white;
+    color: #606665;
+}
+table{
+    border-spacing:0px 2px;
+}
+.search {
+    font-size: 1.2rem;
+    padding: 0.2%;
+    border: #1c9f8a;
+    margin: 1%;
+    width: 462px;
+    height: 50px;
+    border-radius: 25px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border: 2px solid #000;
+}
+.crash-bin{
+    width: 40px;
+    height: 35px;
+}
+.crash-bin:hover{
+    transform: scale(0.9);
+    transition: 300ms;
+}
+.lock{
+    width: 40px;
+    height: 35px;
+}
+.lock:hover{
+    transform: scale(0.9);
+    transition: 300ms;
+}
+.start{
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    padding-left: 25%;
+}
+.add{
+    padding-left: 39%;
+}
+.table-container-addProduct {
+    padding: 2% 26%;
+    font-size: 18px;
+}

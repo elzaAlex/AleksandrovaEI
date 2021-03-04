@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr >
+            <th class="a-link-no-margin">Имя</th>
+            <th class="a-link-no-margin">Фамилия</th>
+            <th class="a-link-no-margin">Имя пользователя</th>
+            <th class="a-link-no-margin">Товар</th>
+            <th class="a-link-no-margin">Дата</th>
+            <th class="a-link-no-margin">Количество</th>
+            <th class="a-link-no-margin">Стоимость 1 шт</th>
+            <th class="a-link-no-margin">Итог</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="act: ${acts}">
+            <td th:utext="${act.buyer.firstName}" class="a-link-no-margin"></td>
+            <td th:utext="${act.buyer.lastName}" class="a-link-no-margin"></td>
+            <td th:utext="${act.buyer.username}" class="a-link-no-margin"></td>
+            <td th:utext="${act.product.product_name}" class="a-link-no-margin"></td>
+            <td th:utext="${act.created_at}" class="a-link-no-margin"></td>
+            <td th:utext="${act.count}" class="a-link-no-margin"></td>
+            <td th:utext="${act.product.product_cost}" class="a-link-no-margin"></td>
+            <td th:utext="'+' + ${#numbers.formatDecimal(act.product.product_cost * act.count ,3,2,'COMMA')}" class="a-link-no-margin" style = "color: #38e30c"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

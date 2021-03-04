@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <div th:if="${#request.isUserInRole('BUYER')}">
+                    <li><a class="a-link-margin" th:href="@{/buyer/personalAccount}">
+                        <img th:src="@{/img/account.png}" class="account-bin">
+                    </a></li>
+                </div>
+                <div th:if="${#request.isUserInRole('SELLER')}">
+                    <li><a class="a-link-margin" th:href="@{/seller/personalAccount}"><img th:src="@{/img/account.png}"
+                                                                                           class="account-bin">
+                    </a></li>
+                </div>
+                <div th:if="${#request.isUserInRole('ADMIN')}">
+                    <li><a class="a-link-margin" th:href="@{/buyer/personalAccount}">
+                        <img th:src="@{/img/account.png}" class="account-bin">
+                    </a></li>
+                </div>
+                <li><a class="a-link-margin p-l-15" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+<div th:if="${#request.isUserInRole('BUYER')}">
+    <div class="choice">
+        <ul class="p-l-170">
+            <li >
+                <a th:href="@{/product/findProduct}">
+                    <div class="centerVertical centerHorizon buttonMenu">Найти <br>Товар</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/buyer/listSellers}">
+                    <div class="centerVertical centerHorizon buttonMenu">Просмотр <br>Продавцов</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/map}">
+                    <div class="centerVertical centerHorizon buttonMenu">Расположение</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:if="${#request.isUserInRole('SELLER')}">
+    <div class="choice">
+        <ul class="p-l-170">
+            <li >
+                <a th:href="@{/seller/sellerRating}">
+                    <div class="centerVertical centerHorizon buttonMenu">Просмотреть <br>Рейтинг</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/seller/histogramSales}">
+                    <div class="centerVertical centerHorizon buttonMenu">Диаграмма <br>Продаж</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/seller/addProduct}">
+                    <div class="centerVertical centerHorizon buttonMenu">Добавить <br>Товар</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/map}">
+                    <div class="centerVertical centerHorizon buttonMenu">Расположение</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:if="${#request.isUserInRole('ADMIN')}">
+    <div class="choice">
+        <ul class="p-l-170">
+            <li>
+                <a th:href="@{/admin/findUser}">
+                    <div class="centerVertical centerHorizon buttonMenu">Пользователи</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/product/findProduct}">
+                    <div class="centerVertical centerHorizon buttonMenu">Товары</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/act/showAct}">
+                    <div class="centerVertical centerHorizon buttonMenu">Чеки</div>
+                </a>
+            </li>
+            <li class="p-l-30">
+                <a th:href="@{/map}">
+                    <div class="centerVertical centerHorizon buttonMenu">Расположение</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

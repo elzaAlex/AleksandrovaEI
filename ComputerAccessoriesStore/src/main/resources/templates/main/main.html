@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+    <style type="text/css">
+   #footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 30px; /* Поля вокруг текста */
+    background: #12A5F1; /* Цвет фона */
+    color: #FFFFFF; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+   }
+  </style>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin" th:href="@{/signIn}">Вход</a></li>
+                <li><a class="a-link-margin" th:href="@{/signUp}">Регистрация</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="start">
+    Добро пожаловать в магазин компьютерной техники!
+</div>
+</body>
+<footer id="footer">
+    <div style="font-size: 20px"> Контактная информация </div>
+    <hr style="margin-top: 8px; margin-bottom: 8px"/>
+    <div>&copy; Александрова Елизавета</div>
+    <div>гр.714301</div>
+    <div>email: elza0jester@gmail.com</div>
+</footer>
+</html>

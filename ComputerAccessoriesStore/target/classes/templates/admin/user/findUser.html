@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five">Поиск пользователей</h1>
+    <form th:action="@{/admin/findUser}" method="get">
+
+        <input class="search" type="text" name="search" th:value="${search}"
+               placeholder="Поиск по имени, фамилии или имени пользователя">
+
+        <div th:if="${#lists.isEmpty(result)}" class="c-label incorrect">Ничего не найдено!</div>
+
+        <div th:if="${not #lists.isEmpty(result)}">
+            <h1 class="c-text-h1">Найденные пользователи</h1>
+            <div class="table-container-user">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="a-link-no-margin">Id</th>
+                        <th class="a-link-no-margin">Имя</th>
+                        <th class="a-link-no-margin">Фамилия</th>
+                        <th class="a-link-no-margin">Пользователь</th>
+                        <th class="a-link-no-margin">Пароль</th>
+                        <th class="a-link-no-margin">Email</th>
+                        <th class="a-link-no-margin">Создан</th>
+                        <th class="a-link-no-margin">Роль</th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
+                        <th class="a-link-no-margin"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="findUser: ${result}">
+                        <td><a th:text="${findUser.id}"></a></td>
+                        <td th:utext="${findUser.firstName}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.lastName}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.username}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.password}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.email}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.created_at}" class="a-link-no-margin"></td>
+                        <td th:utext="${findUser.role}" class="a-link-no-margin"></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/deleteUser?id=' + ${findUser.id}"><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/editUser?id=' + ${findUser.id}"><img th:src="@{/img/edit.png}" class = "crash-bin"></a></td>
+                        <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/blockUser?id=' + ${findUser.id}"><img th:src="@{/img/lock.png}" class = "lock"></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

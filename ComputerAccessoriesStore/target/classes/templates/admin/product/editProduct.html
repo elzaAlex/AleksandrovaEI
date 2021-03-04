@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<form class="box" action="#" th:action="@{/admin/editProduct}" th:object="${product}" method="post">
+    <div class="c-label box c-box-input" style="margin-top: 15%">
+
+        <div class="wrap-input100 validate-input m-b-10">
+            <input class="input100" th:field="*{product_name}" type="text" placeholder="Имя" id="product_name"
+                   name="product_name">
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-10">
+            <input class="input100" type="text" th:field="*{product_cost}" placeholder="Стоимость" id="product_cost"
+                   name="product_cost">
+        </div>
+        <input type="hidden" th:value = "${idSeller}" th:field = "*{idSeller}">
+
+        <input type="hidden" th:value="${product.id}" th:field="*{id}"/>
+
+        <div class="container-login100-form-btn p-t-10">
+            <button class="login100-form-btn">
+                Изменить
+            </button>
+        </div>
+
+    </div>
+</form>
+
+</body>
+</html>

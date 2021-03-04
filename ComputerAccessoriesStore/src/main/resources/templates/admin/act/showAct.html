@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+
+    <script th:inline="javascript">
+        function download(data, filename, type) {
+            var file = new Blob([data], {type:type});
+            if (window.navigator.msSaveOrOpenBlob) // IE10+
+                window.navigator.msSaveOrOpenBlob(file, filename);
+            else { // Others
+                var a = document.createElement("a"),
+                    url = URL.createObjectURL(file);
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(function () {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                }, 0);
+            }
+        }
+    </script>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <input class="search" type="text" name="search" th:value="${search}"
+           placeholder="Поиск по имени пользователя">
+
+    <div th:if="${#request.isUserInRole('ADMIN')}" class="addProduct"><a
+            th:href="@{/act/addAct}" class="buttonMenu centerHorizon centerVertical ">Добавить</a></div>
+
+
+    <div th:if="${not #lists.isEmpty(result)}">
+        <h1 class="c-text-h1">Найденные Чеки</h1>
+        <div class="table-container-act">
+            <table>
+                <thead>
+                <tr>
+                    <th class="a-link-no-margin">Id</th>
+                    <th class="a-link-no-margin">Id товара</th>
+                    <th class="a-link-no-margin">Имя товара</th>
+                    <th class="a-link-no-margin">Количество</th>
+                    <th class="a-link-no-margin">Id продавца</th>
+                    <th class="a-link-no-margin">Имя пользователя продавца</th>
+                    <th class="a-link-no-margin">Id покупателя</th>
+                    <th class="a-link-no-margin">Имя пользователя покупателя</th>
+                    <th class="a-link-no-margin">Дата</th>
+                    <th class="a-link-no-margin"></th>
+                    <th class="a-link-no-margin"></th>
+                    <th class="a-link-no-margin"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="act: ${result}">
+                    <td th:text="${act.id}"></td>
+                    <td th:utext="${act.product.id}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.product.product_name}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.count}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.seller.id}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.seller.username}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.buyer.id}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.buyer.username}" class="a-link-no-margin"></td>
+                    <td th:utext="${act.created_at}" class="a-link-no-margin"></td>
+                    <td class="td-x-container"><a class="a-link-no-margin red-x"
+                                                  th:href="'/act/editAct?id=' + ${act.id}"><img
+                            th:src="@{/img/edit.png}" class="crash-bin"></a></td>
+                    <td class="td-x-container"><a class="a-link-no-margin red-x"
+                                                  th:href="'/act/deleteAct?id=' + ${act.id}"><img
+                            th:src="@{/img/trash-bin.png}" class="crash-bin"></a></td>
+                    <td style="text-align: center">
+                        <button class="download" th:onclick="/*<![CDATA[*/
+                var id = /*[[${act.id}]]*/ ${act.id};
+                var productId = /*[[${act.product.id}]]*/ ${act.product.id};
+                var productName = /*[[${act.product.product_name}]]*/ ${act.product.product_name};
+                var sellerId = /*[[${act.seller.id}]]*/ ${act.seller.id};
+                var sellerName = /*[[${act.seller.username}]]*/ ${act.seller.username};
+                var buyerId = /*[[${act.buyer.id}]]*/ ${act.buyer.id};
+                var buyerName = /*[[${act.buyer.username}]]*/ ${act.buyer.username};
+                var count = /*[[${act.count}]]*/ ${act.count};
+                var date = /*[[${act.created_at}]]*/ ${act.created_at};
+                download('Id: ' + id + '\n' + 'Id товара: ' + productId + '\n' + 'Имя товара: ' + productName + '\n' + 'Id продавца: ' +
+                 sellerId + '\n'  + 'Имя пользователя продавца: ' + sellerName + '\n' + 'Id покупателя: ' + buyerId + '\n' + 'Имя пользователя покупателя: ' + buyerName + '\n'+ 'Количество: ' + count + '\n' +
+                  'Дата: ' + date + '\n', 'Act' + id, String); /*]]>*/ "><img th:src="@{/img/save-file.png}"
+                                                                              class="crash-bin">
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

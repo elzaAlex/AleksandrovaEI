@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <form th:action="@{/product/findProduct}" method="get">
+        <h1 class="c-text-h1 margin-five">Поиск Товаров</h1>
+        <input class="search" type="text" name="search" th:value="${search}" placeholder="Введите имя товара">
+
+        <div th:if="${#lists.isEmpty(result)}" class="c-label incorrect">Ничего не найдено!</div>
+
+        <div th:if="${#request.isUserInRole('ADMIN')}" class="addProduct"><a
+                th:href="@{/admin/addProduct}" class="buttonMenu centerHorizon centerVertical ">Добавить</a></div>
+
+        <div th:if="${not #lists.isEmpty(result)}">
+            <div class="table-container-product">
+                <table style="border: 2px solid #999999;">
+                    <thead>
+                    <tr>
+                        <th class="a-link-no-margin">Id</th>
+                        <th class="a-link-no-margin">Название</th>
+                        <th class="a-link-no-margin">Цена</th>
+                        <th class="a-link-no-margin">Имя пользователя продавца</th>
+                        <th class="a-link-no-margin"></th>
+                        <div th:if="${#request.isUserInRole('ADMIN')}">
+                            <th class="a-link-no-margin"></th>
+                        </div>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product: ${result}">
+                        <td th:text="${product.id}" class="a-link-no-margin"></td>
+                        <td th:text="${product.product_name}" class="a-link-no-margin"></td>
+                        <td th:text="${product.product_cost}" class="a-link-no-margin"></td>
+                        <td th:utext="${product.seller.username}" class="a-link-no-margin"></td>
+                        <div th:if="${#request.isUserInRole('ADMIN')}">
+                            <td class="td-x-container"><a class="a-link-no-margin red-x"
+                                                          th:href="'/admin/editProduct?id=' + ${product.id}"><img
+                                    th:src="@{/img/edit.png}" class="crash-bin"></a></td>
+                            <td class="td-x-container"><a class="a-link-no-margin red-x"
+                                                          th:href="'/admin/deleteProduct?id=' + ${product.id}"><img
+                                    th:src="@{/img/trash-bin.png}" class="crash-bin"></a></td>
+                        </div>
+                        <div th:if="${#request.isUserInRole('BUYER')}">
+                            <td class="td-x-container"><a class="a-link-no-margin red-x"
+                                                          th:href="'/buyer/buyProduct?id=' + ${product.id}"><img
+                                    th:src="@{/img/buy.png}" class="crash-bin"></a></td>
+                        </div>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

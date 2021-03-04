@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/icon.png}"/>
+</head>
+<body class="limiter">
+<header>
+    <div class="container">
+        <div class="navbar">
+            <a class="a-link-margin p-l-200" th:href="@{/} "><img th:src="@{/img/home.png}" class="account-bin">
+            </a>
+            <ul class="p-l-500">
+                <li><a class="a-link-margin p-l-100" th:href="@{/logout}">
+                    <img th:src="@{/img/exit.png}" class="account-bin">
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="text-center">
+    <h1 class="c-text-h1 margin-five">Удаление</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th class="a-link-no-margin">Id</th>
+                <th class="a-link-no-margin">Имя</th>
+                <th class="a-link-no-margin">Фамилия</th>
+                <th class="a-link-no-margin">Пользователь</th>
+                <th class="a-link-no-margin">Пароль</th>
+                <th class="a-link-no-margin">Email</th>
+                <th class="a-link-no-margin">Создан</th>
+                <th class="a-link-no-margin">Роль</th>
+                <th class="a-link-no-margin"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user: ${users}">
+                <td><a th:text="${user.id}"></a></td>
+                <td th:utext="${user.firstName}" class="a-link-no-margin"></td>
+                <td th:utext="${user.lastName}" class="a-link-no-margin"></td>
+                <td th:utext="${user.username}" class="a-link-no-margin"></td>
+                <td th:utext="${user.password}" class="a-link-no-margin"></td>
+                <td th:utext="${user.email}" class="a-link-no-margin"></td>
+                <td th:utext="${user.created_at}" class="a-link-no-margin"></td>
+                <td th:utext="${user.role}" class="a-link-no-margin"></td>
+                <td class="td-x-container"><a class="a-link-no-margin red-x" th:href="'/admin/deleteUser?id=' + ${user.id}"><img th:src="@{/img/trash-bin.png}" class = "crash-bin"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>
